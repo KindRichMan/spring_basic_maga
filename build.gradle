@@ -17,16 +17,35 @@ configurations {
 repositories {
 	mavenCentral()
 }
+//
 
 dependencies {
+	//	spring data jpa 의존성 추가
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+//	jdbc repository를 활용하기 위한 라이브러리 추가
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+//	jsp를 위한 라이브러리 추가
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+	implementation 'javax.servlet:jstl'
+
+//	mybatis 사용을 위한 의존성 추가
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
+
+
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
-	runtimeOnly 'com.mysql:mysql-connector-j'
+	runtimeOnly 'com.mysql:mysql-connector-j'  //
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	// spring security 의존성 추가
+//    implementation "org.springframework.boot:spring-boot-starter-security"
+
+
+
 }
 
 tasks.named('test') {

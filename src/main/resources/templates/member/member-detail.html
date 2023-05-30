@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Member Detail</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Member Detail</h1>
+    <table class="table">
+        <tbody>
+        <tr>
+            <th>ID:</th>
+            <td th:text="${member.id}"></td>
+        </tr>
+        <tr>
+            <th>Name:</th>
+            <td th:text="${member.name}"></td>
+        </tr>
+        <tr>
+            <th>Email:</th>
+            <td th:text="${member.email}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <button class="btn btn-primary" onclick="enableEditing()">Modify</button>
+    <button class="btn btn-primary" onclick="goBack()">Go Back</button>
+
+    <form id="editForm" style="display: none;" action="/member/update" method="post">
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>ID:</th>
+                <td><input class="form-control" type="text" id="id" th:value="${member.id}" name="id" readonly></td>
+            </tr>
+            <tr>
+                <th>Name:</th>
+                <td><input class="form-control" type="text" id="name" th:value="${member.name}" name="name"></td>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <td><input class="form-control" type="email" id="email" th:value="${member.email}" name="email"></td>
+            </tr>
+            <tr>
+                <th>Password:</th>
+                <td><input class="form-control" type="password" id="password" th:value="${member.password}" name="password"></td>
+            </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-primary" type="submit">Save</button>
+        <button class="btn btn-secondary" type="button" onclick="cancelEditing()">Cancel</button>
+        <button class="btn btn-danger" type="submit" formaction="/member/delete">삭제</button>
+    </form>
+
+</div>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+function enableEditing() {
+    if (confirm("수정화면으로 진입하시겠습니까?")) {
+        document.getElementById("editForm").style.display = "block";
+    }
+}
+
+    function cancelEditing() {
+        document.getElementById("editForm").style.display = "none";
+    }
+
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+</body>
+</html>

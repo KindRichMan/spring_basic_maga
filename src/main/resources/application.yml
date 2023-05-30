@@ -1,0 +1,27 @@
+# .properties 를 가독성이  yml(??)??? ???? ????.
+# yml ??? ????? ???? ????? ????.
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3300/board
+    username: root
+    password: 1234
+  jpa:
+    database: mysql
+#    mysql엔진중에 일반적으로 많이 사용되는 InonoDB(??? ??)사용하겠다는 설정
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+#    JPA 설정, ddl을 자동으로 적용하겠다는 설정
+#    ??? dbl ??? ???, ??? ????? ?? ??
+
+    generate-ddl: true
+    hibernate:
+      # create 옵션은 매번 tael를 dro[후 생성
+      # update 옵션은 변경사항만 alter를 적용
+      # 현업에서는 valiidate 옵션으로 검증만 하는 경우가 대다수.
+      ddl-auto: update
+        #    ??? show_sql: true ??? ?????? query? console? ???? ?
+    show_sql: true
+
+mybatis:
+  mapper-locations: classpath:/mapper/**/*.xml
